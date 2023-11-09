@@ -1,8 +1,8 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import 'remixicon/fonts/remixicon.css'
-import Main from './pages/MainPage'
-import ThxPage from './pages/ThxPage'
+import Main from './components/MainPage'
+import ThxPage from './components/ThxPage'
 
 function App() {
 
@@ -12,9 +12,10 @@ function App() {
 
 
   const check = () => {
-    if (!email.match(new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}'))) {
+    if (!email.match(new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')) && email !== '') {
       setEmailError(true)
     }
+
     else {
       setEmailError(false)
       setThxPage(true);
