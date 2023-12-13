@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import './App.css'
 import 'remixicon/fonts/remixicon.css'
 import Main from './components/MainPage'
 import ThxPage from './components/ThxPage'
+
+
+export const AppContext = createContext()
 
 function App() {
 
@@ -24,9 +27,11 @@ function App() {
 
   return (
     <>
-      {!thxPage ? <Main email={email} emailError={emailError} check={check} setEmail={setEmail} /> : <ThxPage setThxPage={setThxPage} thxPage={thxPage} />}
+      <AppContext.Provider value={{ email, setEmail, emailError, setEmailError, thxPage, setThxPage, check }}>
+        {!thxPage ? <Main /> : <ThxPage />}
 
 
+      </AppContext.Provider>
     </>
   )
 }
